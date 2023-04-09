@@ -3,11 +3,11 @@ package main
 import (
 	"golang.org/x/tools/go/analysis/singlechecker"
 
-	"github.com/alexkohler/nakedret"
+	"github.com/zalenskivolt/nakedret"
 )
 
 const (
-	DefaultLines = 5
+	DefaultLines = 7
 )
 
 func main() {
