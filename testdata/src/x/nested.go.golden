@@ -105,3 +105,13 @@ var SingleLit = func() (err error) { return err } // want "naked return in func 
 func SingleLineNested() (err error) {
 	return func() (err error) { return err }() // want "naked return in func `SingleLineNested.<func..:106>` with 1 lines of code"
 }
+
+func NamedReturnsOnMultipleLines() (a, b int,
+	c int,
+	d, e string, f string,
+	err error) {
+	return a, b,
+		c,
+		d, e, f,
+		err // want "naked return in func `NamedReturnsOnMultipleLines` with 5 lines of code"
+}
