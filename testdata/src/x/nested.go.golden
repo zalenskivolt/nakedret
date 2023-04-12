@@ -110,8 +110,5 @@ func NamedReturnsOnMultipleLines() (a, b int,
 	c int,
 	d, e string, f string,
 	err error) {
-	return a, b,
-		c,
-		d, e, f,
-		err // want "naked return in func `NamedReturnsOnMultipleLines` with 5 lines of code"
+	return a, b, c, d, e, f, err // want "naked return in func `NamedReturnsOnMultipleLines` with 5 lines of code"
 }

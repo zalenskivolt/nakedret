@@ -237,7 +237,13 @@ func nakedReturnFix(s *ast.ReturnStmt, funcType *ast.FuncType) *ast.ReturnStmt {
 	for _, result := range funcType.Results.List {
 		for _, ident := range result.Names {
 			if ident != nil {
-				nameExprs = append(nameExprs, ident)
+				idCopy := *ident
+				if len(nameExprs) > 0 {
+					// this keeps the identifiers in the return statement on the same line,
+					// even if the named returns are split across multiple lines in the function declaration
+					idCopy.NamePos = nameExprs[0].Pos()
+				}
+				nameExprs = append(nameExprs, &idCopy)
 			}
 		}
 	}
